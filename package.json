@@ -1,0 +1,30 @@
+{
+  "name": "orca-pdfgen",
+  "version": "0.1.0",
+  "description": "Serverless HTML-to-PDF conversion on AWS Lambda w/ SAM, powered by the headless Chrome API Puppeteer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccjmne/orca-pdfgen.git"
+  },
+  "keywords": [
+    "serverless",
+    "html",
+    "pdf",
+    "aws",
+    "lambda",
+    "sam",
+    "headless",
+    "chrome",
+    "puppeteer"
+  ],
+  "author": "Eric NICOLAS <ccjmne@gmail.com> (ccjmne)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ccjmne/orca-pdfgen/issues"
+  },
+  "homepage": "https://github.com/ccjmne/orca-pdfgen#readme"
+}
