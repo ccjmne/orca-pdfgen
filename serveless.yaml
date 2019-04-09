@@ -1,0 +1,49 @@
+service: orca-pdfgen
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: eu-west-1
+  environment:
+          #    DEBUG: "*"
+    PAGE_LOAD_TIMEOUT: 20000
+    LOGGING: true
+
+plugins:
+  - serverless-plugin-chrome
+  - serverless-webpack
+
+custom:
+  chrome:
+    flags:
+      - --window-size=1280,1696 # Letter size
+      - --hide-scrollbars
+
+functions:
+  pdf:
+    description: Headless Chrome Serverless-framework PDF example
+    memorySize: 1536
+    timeout: 30
+    handler: src/handlers/pdf.default
+    events:
+      - http:
+          path: pdf
+          method: get
+
+resources:
+  Resources:
+    ApiGatewayRestApi:
+      Properties:
+        BinaryMediaTypes:
+          - "*/*"
+
+    # Enable X-Ray tracing on Lambda functions
+    # ScreenshotLambdaFunction:
+    #   Properties:
+    #     TracingConfig:
+    #       Mode: Active
+    # PdfLambdaFunction:
+    #   Properties:
+    #     TracingConfig:
+    #       Mode: Active
