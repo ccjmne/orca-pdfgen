@@ -4,7 +4,13 @@
   "description": "Serverless HTML-to-PDF conversion on AWS Lambda w/ SAM, powered by the headless Chrome API Puppeteer",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint && npm run ava",
+    "watch:test": "ava --watch",
+    "ava": "ava",
+    "lint": "npm run lint:eslint -s",
+    "lint:eslint": "eslint $npm_package_config_jsSrc",
+    "deploy": "serverless deploy -v",
+    "upgrade-dependencies": "yarn upgrade-interactive --latest --exact"
   },
   "repository": {
     "type": "git",
@@ -26,5 +32,49 @@
   "bugs": {
     "url": "https://github.com/ccjmne/orca-pdfgen/issues"
   },
-  "homepage": "https://github.com/ccjmne/orca-pdfgen#readme"
+  "homepage": "https://github.com/ccjmne/orca-pdfgen#readme",
+  "dependencies": {
+    "chrome-remote-interface": "0.25.3"
+  },
+  "devDependencies": {
+    "ava": "0.23.0",
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.2",
+    "babel-plugin-transform-object-entries": "1.0.0",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-stage-3": "6.24.1",
+    "babel-register": "6.26.0",
+    "serverless": "^1.40.0",
+    "serverless-plugin-chrome": "^1.0.0-55",
+    "serverless-webpack": "4.0.0",
+    "webpack": "3.8.1"
+  },
+  "ava": {
+    "require": "babel-register",
+    "babel": "inherits"
+  },
+  "babel": {
+    "sourceMaps": true,
+    "presets": [
+      [
+        "env",
+        {
+          "modules": "commonjs",
+          "targets": {
+            "node": "6.10"
+          },
+          "include": [
+            "es7.object.values",
+            "es7.object.entries"
+          ]
+        }
+      ],
+      "stage-3"
+    ],
+    "plugins": [
+      "transform-object-rest-spread",
+      "transform-object-entries"
+    ]
+  }
 }
