@@ -25,7 +25,10 @@ const defaultPrintOptions = {
 
 function cleanPrintOptionValue (type, value) {
   const types = { string: String, number: Number, boolean: Boolean }
-  return types[type](value)
+  if (type in types)
+    return types[type](value)
+  else
+    return value
 }
 
 export function makePrintOptions (options = {}) {
