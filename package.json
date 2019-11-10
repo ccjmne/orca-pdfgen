@@ -37,44 +37,26 @@
     "chrome-remote-interface": "0.25.3"
   },
   "devDependencies": {
-    "ava": "0.23.0",
-    "babel-core": "6.26.0",
-    "babel-loader": "7.1.2",
-    "babel-plugin-transform-object-entries": "1.0.0",
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-preset-env": "1.6.1",
-    "babel-preset-stage-3": "6.24.1",
-    "babel-register": "6.26.0",
+    "@babel/core": "^7.7.2",
+    "@babel/node": "^7.7.0",
+    "@babel/polyfill": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/register": "^7.7.0",
+    "ava": "^2.4.0",
     "serverless": "^1.40.0",
     "serverless-plugin-chrome": "^1.0.0-55",
     "serverless-webpack": "4.0.0",
     "webpack": "3.8.1"
   },
   "ava": {
-    "require": "babel-register",
-    "babel": "inherits"
+    "require": [
+      "@babel/polyfill",
+      "@babel/register"
+    ]
   },
   "babel": {
-    "sourceMaps": true,
     "presets": [
-      [
-        "env",
-        {
-          "modules": "commonjs",
-          "targets": {
-            "node": "6.10"
-          },
-          "include": [
-            "es7.object.values",
-            "es7.object.entries"
-          ]
-        }
-      ],
-      "stage-3"
-    ],
-    "plugins": [
-      "transform-object-rest-spread",
-      "transform-object-entries"
+      "@babel/preset-env"
     ]
   }
 }
