@@ -39,13 +39,14 @@
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@babel/node": "^7.7.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "@babel/register": "^7.7.0",
     "ava": "^2.4.0",
-    "serverless": "^1.40.0",
+    "babel-loader": "^8.0.6",
     "serverless-plugin-chrome": "^1.0.0-55",
-    "serverless-webpack": "4.0.0",
+    "serverless-webpack": "^4.0.0",
     "webpack": "3.8.1"
   },
   "ava": {
@@ -57,6 +58,9 @@
   "babel": {
     "presets": [
       "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-object-rest-spread"
     ]
   }
 }
