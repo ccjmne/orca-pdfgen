@@ -5,6 +5,7 @@
 //
 //
 //
+import '@babel/polyfill'
 import log from '../utils/log'
 import pdf, { makePrintOptions } from '../chrome/pdf'
 
